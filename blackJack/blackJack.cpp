@@ -4,9 +4,6 @@
 #include <iostream>
 using namespace std;
 BlackJack::BlackJack() {
-	deck = new int[size];
-	Mydeck = new int;
-	Enemydeck = new int;
 }
 BlackJack::~BlackJack(){
 
@@ -15,7 +12,6 @@ void BlackJack::ReSet() {
 	int num = 101,count =0;
 	for (int i = 0; i < 4; i++) {
 		for (int j = 0; j < 13; j++) {
-			deck[count] = num;
 			count++;
 			num++;
 		}
@@ -24,12 +20,7 @@ void BlackJack::ReSet() {
 	}//ちゃんと配列に数字を入っているか確認するやつ
 	
 }
-void BlackJack::MyCardShow() {
-	
-	for (int i = 0; Mydeck[i] != NULL; i++) {
-		CheckCardClass(Mydeck[i]);
 	}
-	cout << ",";
 
 }
 void BlackJack::EnemyCardShow() {
@@ -39,58 +30,21 @@ void BlackJack::EnemyCardShow() {
 	cout << ",";
 }
 void BlackJack::shuffle() {
-	if (deck != NULL) {
 		srand((unsigned int)time(NULL));
 		cout << endl;
 
 		for (int i = size; i > 1; --i) {
-			swap(deck[rand() % (i - 1)], deck[i - 1]);
 		}
 	}
 }
 void BlackJack::CheckCardClass(int OneCard) {
 	int ClassNum = 0;
-	ClassNum = OneCard/100 ;
 	switch (ClassNum)
 	{
-	case 1:
-		cout<< "ハートの"<<flush;
 		break;
-	case 2:
-		cout << "スペードの" << flush;
-
 		break;
-	case 3:
-		cout << "ダイヤの" << flush;
-
 		break;
-	case 4:
-		cout << "クラブの" << flush;
 		break;
-	}
-	CheckCardNum(OneCard);
-}
-void BlackJack::CheckCardNum(int OneCard) {
-	int num = OneCard % 100;
-
-	switch (num)
-	{
-	case 1:
-		cout << "A" << flush;
-		break;
-	case 11:
-		cout << "J" << flush;
-
-		break;
-	case 12:
-		cout << "Q" << flush;
-		break;
-	case 13:
-		cout << "K" << flush;
-		break;
-	default:
-		cout << num << "," << flush;
-			break;
 
 	}
 }
@@ -120,7 +74,9 @@ int main()
 
 	blackjack.ReSet();
 
+	blackjack.Show();
 	blackjack.shuffle();
+	blackjack.Show();
 
 	blackjack.battle();
 }

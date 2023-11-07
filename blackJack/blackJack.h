@@ -4,9 +4,12 @@
 #define INPUTSTREAM_H_
 class BlackJack {
 private:
+	int* mycard;
+	int* enemycard;
 	int size = 52;
 	int* deck =new int[size];
-
+	int* card=new int[size];
+	
 	int* Mydeck = new int;
 	int* Enemydeck = new int;
 	int count = 0;
@@ -15,19 +18,9 @@ public:
 
 	~BlackJack();
 
-	void MyCardShow();
-
-	void EnemyCardShow();
-
 	void ReSet();
 	void shuffle();
-
 	void CheckCardClass(int OneCard);
-void  CheckCardNum(int OneCard);
-void battle();
-int Drawcard();
-void mySum();
-void enemySum();
-
+	
 };
 #endif // !INPUTSTREAM_H_
